@@ -41,8 +41,10 @@ public class Main {
                 + "_".repeat(answer.length() - 2)
                 + answer.substring(answer.length() - 1);
 
+        int heartsAmount = 5;
         System.out.println(answer);
         System.out.println(answerInProgress);
+        System.out.println("<3 ".repeat(heartsAmount));
 
 
         //System.out.println(slowo.charAt(0));
