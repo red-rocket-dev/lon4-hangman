@@ -1,6 +1,7 @@
 package pl.sda;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
@@ -42,29 +43,32 @@ public class Main {
                 + answer.substring(answer.length() - 1);
 
         int heartsAmount = 5;
-        System.out.println(answer);
+
         System.out.println(answerInProgress);
         System.out.println("<3 ".repeat(heartsAmount));
-
-
-        //System.out.println(slowo.charAt(0));
-        //System.out.println(slowo.charAt(slowo.length() - 1));
-
-      /*  String answer = "lokomotywa";
-        String answerInProgress = "l________a";
-        //uzytkownik wprwadza "o"
-        //sprawdzam cz w answer jest jakies "o" np. za pomoca:
-        System.out.println(answer.indexOf("o"));
-
-        //w ten sposob mozemy podmienic literke na pozycji pierwszej
-        String answerInProgressAfterFirstReplacement =
-                answerInProgress.substring(0, 1) + "o" + answerInProgress.substring(2);
-        System.out.println(answerInProgressAfterFirstReplacement);
-
-        System.out.println(answer.indexOf("o", 2));
-        answerInProgressAfterFirstReplacement =
-                answerInProgressAfterFirstReplacement.substring(0, 3) + "o" + answerInProgressAfterFirstReplacement.substring(4);
-        System.out.println(answerInProgressAfterFirstReplacement);*/
+        while (heartsAmount > 0) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Podaj jedną literę:");
+            String userGuess = scanner.next();
+            if (answer.contains(userGuess)) {
+                int positionOfUserGuess = answer.indexOf(userGuess);
+                while (positionOfUserGuess != -1) {
+                    answerInProgress = answerInProgress.substring(0, positionOfUserGuess)
+                            + userGuess
+                            + answerInProgress.substring(positionOfUserGuess + 1);
+                    positionOfUserGuess = answer.indexOf(userGuess, positionOfUserGuess + 1);
+                }
+            } else {
+                heartsAmount--;
+            }
+            System.out.println(answerInProgress);
+            System.out.println("<3 ".repeat(heartsAmount));
+            if (answerInProgress.equals(answer)) {
+                System.out.println("Wygrana!");
+                return;
+            }
+        }
+        System.out.println("Przegrana!");
 
     }
 }
