@@ -19,12 +19,36 @@ public class Main {
          * 7. Jeśli graczowi skończyły się serduszka wypisz: "Przegrana :("
          *
          */
+        String wordArray[] = {"lokomotywa", "test", "grupa", "londyn", "balkon", "perkusja", "odkurzacz"};
+
         Random randomGenerator = new Random();
-        randomGenerator.nextInt(10);
+        int randomNumber = randomGenerator.nextInt(wordArray.length);
+
+        String answer = wordArray[randomNumber];
+        /*StringBuilder answerInProgressBuilder = new StringBuilder(answer.substring(0, 1));
+        for (int i = 1; i < answer.length() - 1; i++) {
+            answerInProgressBuilder.append("_");
+            //answerInProgress += "_";
+        }
+        answerInProgressBuilder.append(answer.substring(answer.length() - 1));
+        //answerInProgress += answer.substring(answer.length() - 1);
+
+
+        //String answerInProgress = answerInProgressBuilder.toString();*/
+
+
+        String answerInProgress = answer.substring(0, 1)
+                + "_".repeat(answer.length() - 2)
+                + answer.substring(answer.length() - 1);
+
+        System.out.println(answer);
+        System.out.println(answerInProgress);
+
+
         //System.out.println(slowo.charAt(0));
         //System.out.println(slowo.charAt(slowo.length() - 1));
 
-        String answer = "lokomotywa";
+      /*  String answer = "lokomotywa";
         String answerInProgress = "l________a";
         //uzytkownik wprwadza "o"
         //sprawdzam cz w answer jest jakies "o" np. za pomoca:
@@ -38,7 +62,7 @@ public class Main {
         System.out.println(answer.indexOf("o", 2));
         answerInProgressAfterFirstReplacement =
                 answerInProgressAfterFirstReplacement.substring(0, 3) + "o" + answerInProgressAfterFirstReplacement.substring(4);
-        System.out.println(answerInProgressAfterFirstReplacement);
+        System.out.println(answerInProgressAfterFirstReplacement);*/
 
     }
 }
